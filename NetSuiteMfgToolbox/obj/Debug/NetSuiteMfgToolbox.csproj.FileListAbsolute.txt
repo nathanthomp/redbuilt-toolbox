@@ -1,0 +1,16 @@
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\bin\Debug\NetSuiteMfgToolbox.exe.config
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\bin\Debug\NetSuiteMfgToolbox.exe
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\bin\Debug\NetSuiteMfgToolbox.pdb
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.csproj.AssemblyReference.cache
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.csproj.SuggestedBindingRedirects.cache
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\MainWindow.g.cs
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\App.g.cs
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox_MarkupCompile.cache
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox_MarkupCompile.lref
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\MainWindow.baml
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.g.resources
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.Properties.Resources.resources
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.csproj.GenerateResource.cache
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.csproj.CoreCompileInputs.cache
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.exe
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\NetSuiteMfgToolbox.pdb
