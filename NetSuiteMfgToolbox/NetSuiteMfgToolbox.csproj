@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RedBuilt.NetSuite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f785039e6357e68b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\RedBuilt.NetSuite\RedBuilt.NetSuite.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -86,6 +90,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Dependencies\RedBuilt.NetSuite\Nlog.config" />
+    <None Include="Dependencies\RedBuilt.NetSuite\RedBuilt.NetSuite.dll.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +99,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dependencies\RedBuilt.NetSuite\Azure.Core.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Azure.Core.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Azure.Identity.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Azure.Identity.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Azure.Security.KeyVault.Secrets.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Azure.Security.KeyVault.Secrets.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.Bcl.AsyncInterfaces.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Microsoft.Bcl.AsyncInterfaces.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.Identity.Client.dll" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.Identity.Client.Extensions.Msal.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Microsoft.Identity.Client.Extensions.Msal.xml" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Microsoft.Identity.Client.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.IdentityModel.Abstractions.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Microsoft.IdentityModel.Abstractions.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.Rest.ClientRuntime.Azure.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Microsoft.Rest.ClientRuntime.Azure.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Microsoft.Rest.ClientRuntime.dll" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\Newtonsoft.Json.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\Newtonsoft.Json.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\NLog.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\NLog.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\RedBuilt.NetSuite.dll" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\RedBuilt.NetSuite.pdb" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\RedBuilt.NetSuite.XmlSerializers.dll" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Buffers.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Buffers.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Diagnostics.DiagnosticSource.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Memory.Data.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Memory.Data.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Memory.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Memory.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Numerics.Vectors.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Numerics.Vectors.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Runtime.CompilerServices.Unsafe.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Runtime.CompilerServices.Unsafe.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Security.Cryptography.ProtectedData.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Security.Cryptography.ProtectedData.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Text.Encodings.Web.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Text.Encodings.Web.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Text.Json.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Text.Json.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.Threading.Tasks.Extensions.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.Threading.Tasks.Extensions.xml" />
+    <Content Include="Dependencies\RedBuilt.NetSuite\System.ValueTuple.dll" />
+    <Resource Include="Dependencies\RedBuilt.NetSuite\System.ValueTuple.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
