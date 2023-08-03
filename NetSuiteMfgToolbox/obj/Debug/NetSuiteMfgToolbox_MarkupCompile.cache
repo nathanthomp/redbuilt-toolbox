@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\App.xaml
-1219584333
+31803822671
 25-610256613
-51579654133
+11-682327225
 15-954269722
-MainWindow.xaml;
+Views\MainView.xaml;Themes\MenuButtonTheme.xaml;Views\UnreleaseView.xaml;
 
 False
 
