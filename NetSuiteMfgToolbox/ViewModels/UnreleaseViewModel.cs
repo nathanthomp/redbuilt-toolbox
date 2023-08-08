@@ -1,11 +1,4 @@
 ﻿using NetSuiteMfgToolbox.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
@@ -26,14 +19,14 @@ namespace NetSuiteMfgToolbox.ViewModels
 			}
 		}
 
-		public ICommand UnreleaseCommand { get; set; }
+		public ICommand UnreleaseCommand { get; }
 
 		public UnreleaseViewModel()
 		{
 			this.Model = new UnreleaseModel();
-			this.UnreleaseCommand = new RelayCommand(o => 
+			this.UnreleaseCommand = new RelayCommand(async o => 
 			{
-				this.Model.Unrelease(SONumber);
+				await this.Model.Unrelease(SONumber);
 			});
         }
 	}
