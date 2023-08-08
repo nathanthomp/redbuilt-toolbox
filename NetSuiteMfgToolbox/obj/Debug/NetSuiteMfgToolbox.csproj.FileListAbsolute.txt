@@ -46,3 +46,5 @@ C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debu
 C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\Views\UnreleaseView.g.cs
 C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\Views\UnreleaseView.baml
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\Views\UpdateBOMRevisionView.g.cs
+C:\Users\nthompson\source\repos\NetSuite Mfg Toolbox\NetSuiteMfgToolbox\obj\Debug\Views\UpdateBOMRevisionView.baml

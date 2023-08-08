@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
@@ -22,19 +17,26 @@ namespace NetSuiteMfgToolbox.ViewModels
 		}
 
         private UnreleaseViewModel UnreleaseViewModel { get; set; }
-        /*
-		 * To add new views, add the above line with the new view model type.
-		 */
+        private UpdateBOMRevisionViewModel UpdateBOMRevisionViewModel { get; set; }
+
+		public ICommand UnreleaseViewCommmand { get; set; }
+		public ICommand UpdateBOMRevisionCommand { get; set; }
 
         public MainViewModel()
 		{
 			this.UnreleaseViewModel = new UnreleaseViewModel();
-            /*
-			 * To add new views, add the above line with the new view model type.
-			 */
-            CurrentView = UnreleaseViewModel;
+            this.UpdateBOMRevisionViewModel = new UpdateBOMRevisionViewModel();
+
+			this.UnreleaseViewCommmand = new RelayCommand(o =>
+			{
+				this.CurrentView = this.UnreleaseViewModel;
+			});
+			this.UpdateBOMRevisionCommand = new RelayCommand(o =>
+			{
+				this.CurrentView = this.UpdateBOMRevisionViewModel;
+			});
+
+            this.CurrentView = UnreleaseViewModel;
 		}
-
-
 	}
 }

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="NetSuiteMfgToolbox.Views.UpdateBOMRevisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetSuiteMfgToolbox.Views"
+             xmlns:viewModels="clr-namespace:NetSuiteMfgToolbox.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModels:UpdateBOMRevisionViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <TextBlock Text="Update BOM Revisions"
+                   HorizontalAlignment="Center"
+                   FontSize="22"
+                   Margin="0 0 0 40"/>
+        <TextBlock Text="Enter SO Number"
+                   HorizontalAlignment="Center"
+                   FontSize="20"
+                   Margin="0 0 0 10"/>
+        <TextBox
+            HorizontalAlignment="Center"
+            Width="200"
+            FontSize="20"
+            Margin="0 0 0 10"
+            Text="{Binding SONumber}"/>
+        <Button
+            HorizontalAlignment="Center"
+            Height="25"
+            Width="100"
+            Content="Update"
+            Command="{Binding UpdateCommand}"/>
+    </StackPanel>
+</UserControl>
