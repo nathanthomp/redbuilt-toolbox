@@ -60,10 +60,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\UnreleaseModel.cs" />
+    <Compile Include="Models\UpdateBOMRevisionModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\UnreleaseViewModel.cs" />
+    <Compile Include="ViewModels\UpdateBOMRevisionViewModel.cs" />
     <Compile Include="Views\UnreleaseView.xaml.cs">
       <DependentUpon>UnreleaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateBOMRevisionView.xaml.cs">
+      <DependentUpon>UpdateBOMRevisionView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UnreleaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateBOMRevisionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

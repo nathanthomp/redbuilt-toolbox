@@ -31,6 +31,5 @@
             Width="100"
             Content="Unrelease"
             Command="{Binding UnreleaseCommand}"/>
-
     </StackPanel>
 </UserControl>
