@@ -30,6 +30,6 @@
             Height="25"
             Width="100"
             Content="Unrelease"
-            Command="{Binding UnreleaseCommand}"/>
+            Command="{Binding UnreleaseCommand}" Click="Button_Click"/>
     </StackPanel>
 </UserControl>

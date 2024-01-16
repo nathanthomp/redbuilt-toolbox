@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using RedBuilt.NetSuite;
+using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
@@ -38,5 +39,27 @@ namespace NetSuiteMfgToolbox.ViewModels
 
             this.CurrentView = UnreleaseViewModel;
 		}
-	}
+
+        public string azureAppId = "31fe67d2-9f85-4860-8abe-00e96abd3de6"; // Azure AD > App registrations > RB Mfg Toolbox
+        public string azureAppSecret = "~KO8Q~.rJe8nNP-3lUSRuQGVDVh4JLGZd_u2Pbkt"; // PWVault1 > RBMfgToolbox
+
+        private NSClient.NSEnvironment _environment = NSClient.NSEnvironment.Sandbox;
+        public NSClient.NSEnvironment Environment
+        {
+            get { return _environment; }
+            set { _environment = value; }
+        }
+
+        private NSClient _nsClient;
+        public NSClient nsClient
+        {
+            get { return _nsClient; }
+            set 
+            { 
+                _nsClient = value;
+                this.UnreleaseViewModel.nsClient = _nsClient;
+                this.UpdateBOMRevisionViewModel.nsClient = _nsClient;
+            }
+        }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using NetSuiteMfgToolbox.Models;
+using RedBuilt.NetSuite;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Documents;
@@ -24,7 +25,14 @@ namespace NetSuiteMfgToolbox.ViewModels
 			}
 		}
 
-		public ICommand UnreleaseCommand { get; }
+		private NSClient _nsClient;
+        public NSClient nsClient
+        {
+            get { return _nsClient; }
+            set { _nsClient = value; }
+        }
+
+        public ICommand UnreleaseCommand { get; }
 
 		public UnreleaseViewModel()
 		{
@@ -39,6 +47,7 @@ namespace NetSuiteMfgToolbox.ViewModels
                 await this.Model.Unrelease(this.SONumber);
                 this.list.Add("Unrelease finished");
             });
+			this.Model.ViewModel = this;
         }
 	}
 }

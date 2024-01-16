@@ -1,4 +1,5 @@
 ﻿using NetSuiteMfgToolbox.Models;
+using RedBuilt.NetSuite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,13 @@ namespace NetSuiteMfgToolbox.ViewModels
             {
                 await this.Model.Update(this.SONumber);
             });
+        }
+
+        private NSClient _nsClient;
+        public NSClient nsClient
+        {
+            get { return _nsClient; }
+            set { _nsClient = value; }
         }
     }
 }
