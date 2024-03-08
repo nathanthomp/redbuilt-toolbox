@@ -1,19 +1,15 @@
-﻿using NetSuiteMfgToolbox.Models;
+﻿using NetSuiteMfgToolbox.Commands;
+using NetSuiteMfgToolbox.Models;
 using RedBuilt.NetSuite;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
-    public class UnreleaseViewModel : ObservableObject
+    public class UnreleaseViewModel : ViewModelBase
     {
-		private UnreleaseModel Model { get; set; }
+		private readonly UnreleaseModel _model;
 
-		private List<string> list { get; set; }
-
-		private string _soNumber;
+		private string _soNumber = string.Empty;
 
 		public string SONumber
 		{
@@ -25,6 +21,8 @@ namespace NetSuiteMfgToolbox.ViewModels
 			}
 		}
 
+
+		// TODO: Might be better to go into MainViewModel
 		private NSClient _nsClient;
         public NSClient nsClient
         {
@@ -36,18 +34,21 @@ namespace NetSuiteMfgToolbox.ViewModels
 
 		public UnreleaseViewModel()
 		{
-			this.Model = new UnreleaseModel();
-			this.list = new List<string>();
-			this.UnreleaseCommand = new RelayCommand(async o => 
-			{
-				// await this.Model.Login()
-				// await this.Model.Load()
-				// await this.Model.Unrelease()
-				this.list.Add("Starting Unrelease...");
-                await this.Model.Unrelease(this.SONumber);
-                this.list.Add("Unrelease finished");
-            });
-			this.Model.ViewModel = this;
+			_model = new UnreleaseModel();
+			UnreleaseCommand = new UnreleaseCommand(_model, _soNumber);
+
+			//this.UnreleaseCommand = new RelayCommand(async o => 
+			//{
+			//	// await this.Model.Login()
+			//	// await this.Model.Load()
+			//	// await this.Model.Unrelease()
+			//	this.list.Add("Starting Unrelease...");
+   //             await this.Model.Unrelease(this.SONumber);
+   //             this.list.Add("Unrelease finished");
+   //         });
+
+			// TODO
+			_model.ViewModel = this;
         }
 	}
 }

@@ -60,9 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\UnreleaseCommand.cs" />
     <Compile Include="Models\UnreleaseModel.cs" />
     <Compile Include="Models\UpdateBOMRevisionModel.cs" />
-    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="ViewModels\UnreleaseViewModel.cs" />
     <Compile Include="ViewModels\UpdateBOMRevisionViewModel.cs" />
     <Compile Include="Views\UnreleaseView.xaml.cs">
@@ -80,7 +81,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ObservableObject.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>

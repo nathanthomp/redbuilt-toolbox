@@ -1,15 +1,10 @@
 ﻿using NetSuiteMfgToolbox.Models;
 using RedBuilt.NetSuite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
-    public class UpdateBOMRevisionViewModel : ObservableObject
+    public class UpdateBOMRevisionViewModel : ViewModelBase
     {
         private UpdateBOMRevisionModel Model { get; set; }
 

@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : ViewModelBase
     {
         private object _currentView;
 
@@ -32,6 +32,7 @@ namespace NetSuiteMfgToolbox.ViewModels
 			{
 				this.CurrentView = this.UnreleaseViewModel;
 			});
+
 			this.UpdateBOMRevisionCommand = new RelayCommand(o =>
 			{
 				this.CurrentView = this.UpdateBOMRevisionViewModel;
