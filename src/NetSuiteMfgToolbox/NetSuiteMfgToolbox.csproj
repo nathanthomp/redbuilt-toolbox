@@ -62,6 +62,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\UnreleaseCommand.cs" />
+    <Compile Include="Commands\UpdateCommand.cs" />
     <Compile Include="Models\UnreleaseModel.cs" />
     <Compile Include="Models\UpdateBOMRevisionModel.cs" />
     <Compile Include="Commands\CommandBase.cs" />

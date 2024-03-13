@@ -1,28 +1,25 @@
 ﻿using NetSuiteMfgToolbox.Models;
+using NetSuiteMfgToolbox.ViewModels;
 
 namespace NetSuiteMfgToolbox.Commands
 {
-    internal class UnreleaseCommand : CommandBase
+    public class UnreleaseCommand : CommandBase
     {
-        private readonly UnreleaseModel _model;
-        private readonly string _soNumber;
+        private readonly UnreleaseViewModel _viewModel;
 
-        public UnreleaseCommand(UnreleaseModel model, string soNumber)
+        public UnreleaseCommand(UnreleaseViewModel viewModel)
         {
-            _model = model;
-            _soNumber = soNumber;
+            _viewModel = viewModel;
         }
 
         public override bool CanExecute(object parameter)
         {
-            // TODO:
-            // SO Number must pass RegEx
-            return base.CanExecute(parameter);
+            return _viewModel.IsValidSalesOrderName && _viewModel.IsLoggedIn && base.CanExecute(parameter);
         }
 
         public override void Execute(object parameter)
         {
-            _model.Unrelease(_soNumber);
+            UnreleaseModel.Unrelease(_viewModel.SalesOrderName);
         }
     }
 }
