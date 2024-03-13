@@ -21,6 +21,7 @@ namespace NetSuiteMfgToolbox.ViewModels
 			}
 		}
 
+        public bool IsLoggedIn { get => _mainViewModel.IsLoggedIn; }
 
 		// TODO: Might be better to go into MainViewModel
 		private NSClient _nsClient;

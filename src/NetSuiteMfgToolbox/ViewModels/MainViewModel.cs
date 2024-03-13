@@ -27,6 +27,7 @@ namespace NetSuiteMfgToolbox.ViewModels
             set { _environment = value; }
         }
 
+        public bool IsLoggedIn { get; set; }
 
 
         private UnreleaseViewModel _unreleaseViewModel;
@@ -49,6 +50,8 @@ namespace NetSuiteMfgToolbox.ViewModels
             {
                 CurrentView = _updateBOMRevisionViewModel;
             });
+
+            IsLoggedIn = false;
 
             CurrentView = _unreleaseViewModel;
 		}

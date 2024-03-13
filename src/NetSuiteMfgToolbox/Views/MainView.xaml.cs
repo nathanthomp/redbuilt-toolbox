@@ -31,6 +31,7 @@ namespace NetSuiteMfgToolbox.Views
         private async void Environment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Status.Text = string.Empty;
+            //_viewModel.IsLoggedIn = false;
 
             var comboBox = sender as ComboBox;
             var comboBoxItem = comboBox.SelectedValue as ComboBoxItem;
@@ -59,6 +60,7 @@ namespace NetSuiteMfgToolbox.Views
                 }
                 Progress.Visibility = Visibility.Hidden;
                 Status.Text = $"Logged into NetSuite {choosenEnvironment}";
+                _viewModel.IsLoggedIn = true;
             }
             catch (Exception ex)
             {

@@ -21,7 +21,7 @@ namespace NetSuiteMfgToolbox.ViewModels
             }
         }
 
-        public ICommand UpdateCommand { get; set; }
+        public bool IsLoggedIn { get => _mainViewModel.IsLoggedIn; }
 
         public UpdateBOMRevisionViewModel()
         {
