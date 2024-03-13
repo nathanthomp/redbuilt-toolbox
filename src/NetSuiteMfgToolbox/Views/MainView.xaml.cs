@@ -16,7 +16,7 @@ namespace NetSuiteMfgToolbox.Views
         public MainView()
         {
             InitializeComponent();
-            Title = $"NetSuite Manufacturing Toolbox version {Assembly.GetExecutingAssembly().GetName().Version}";
+            Title = $"NetSuite Mfg Toolbox version {Assembly.GetExecutingAssembly().GetName().Version}";
 
             _viewModel = new MainViewModel();
             DataContext = _viewModel;

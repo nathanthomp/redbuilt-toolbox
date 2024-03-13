@@ -7,14 +7,10 @@
         xmlns:viewModels="clr-namespace:NetSuiteMfgToolbox.ViewModels"
         mc:Ignorable="d"
         Height="600" Width="920" Loaded="Window_Loaded" Closing="Window_Closing">
-    <Window.DataContext>
-        <viewModels:MainViewModel/>
-    </Window.DataContext>
     <Grid>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="177.273"/>
-            <ColumnDefinition Width="47.727"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
@@ -23,12 +19,18 @@
             <RowDefinition Height="455"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        
+
+        <Image Source="../Resources/RedBuilt_logo_large.jpg" 
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Height="50"
+               Margin="10 0 "/>
+
         <TextBlock Text="NetSuite Mfg Toolbox"
                    Grid.Column="2"
                    VerticalAlignment="Center"
                    FontSize="26"
-                   Margin="20,0,408,0"/>
+                   Margin="25 0 0 0"/>
 
         <ComboBox HorizontalAlignment="Right" 
                   x:Name="Environment" 
@@ -43,15 +45,10 @@
             <ComboBoxItem Content="ReleasePreview"/>
         </ComboBox>
         
-        <Image Source="../Resources/RedBuilt_logo_large.jpg" 
-               VerticalAlignment="Center"
-               HorizontalAlignment="Left"
-               Grid.Column="2"
-               Height="50"
-               Margin="347,0,0,0"/>
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-            <RadioButton Content="Unrelease WO's"
+
+        <StackPanel Grid.Row="1">
+            <RadioButton Content="Unrelease Work Orders"
                          Height="50"
                          FontSize="14"
                          Style="{StaticResource MenuButtonTheme}"
