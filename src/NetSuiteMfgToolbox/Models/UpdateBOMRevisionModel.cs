@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-
-namespace NetSuiteMfgToolbox.Models
+﻿namespace NetSuiteMfgToolbox.Models
 {
     public class UpdateBOMRevisionModel
     {
-        public async Task Update(string soNumber)
+        public static void Update()
         {
-            await Task.Delay(1000);
-            MessageBox.Show($"Updated {soNumber}'s BOM Revisions");
+
         }
     }
 }

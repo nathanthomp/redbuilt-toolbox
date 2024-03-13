@@ -1,54 +1,50 @@
 ﻿using NetSuiteMfgToolbox.Commands;
-using NetSuiteMfgToolbox.Models;
-using RedBuilt.NetSuite;
-using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
     public class UnreleaseViewModel : ViewModelBase
     {
-		private readonly UnreleaseModel _model;
+		private readonly MainViewModel _mainViewModel;
 
-		private string _soNumber = string.Empty;
+		private string _salesOrderName = string.Empty;
 
-		public string SONumber
+		public string SalesOrderName
 		{
-			get { return _soNumber; }
+			get { return _salesOrderName; }
 			set 
 			{
-				_soNumber = value;
+                _salesOrderName = value;
 				OnPropertyChanged();
+                UnreleaseCommand.OnCanExecuteChanged();
 			}
 		}
 
+        public bool IsLoggedIn { get => _mainViewModel.IsLoggedIn; }
 
-		// TODO: Might be better to go into MainViewModel
-		private NSClient _nsClient;
-        public NSClient nsClient
-        {
-            get { return _nsClient; }
-            set { _nsClient = value; }
-        }
-
-        public ICommand UnreleaseCommand { get; }
-
-		public UnreleaseViewModel()
+        // Sales order name must be non empty, 5 characters, and a number
+        public bool IsValidSalesOrderName
 		{
-			_model = new UnreleaseModel();
-			UnreleaseCommand = new UnreleaseCommand(_model, _soNumber);
+			get
+			{
+				if (string.IsNullOrWhiteSpace(SalesOrderName))
+					return false;
+				if (SalesOrderName.Length != 5)
+					return false;
+				foreach (var c in SalesOrderName)
+				{
+					if (!char.IsDigit(c))
+						return false;
+				}
+				return true;
+			}
+		}
 
-			//this.UnreleaseCommand = new RelayCommand(async o => 
-			//{
-			//	// await this.Model.Login()
-			//	// await this.Model.Load()
-			//	// await this.Model.Unrelease()
-			//	this.list.Add("Starting Unrelease...");
-   //             await this.Model.Unrelease(this.SONumber);
-   //             this.list.Add("Unrelease finished");
-   //         });
+        public CommandBase UnreleaseCommand { get; }
 
-			// TODO
-			_model.ViewModel = this;
+		public UnreleaseViewModel(MainViewModel mainViewModel)
+		{
+            _mainViewModel = mainViewModel;
+            UnreleaseCommand = new UnreleaseCommand(this);
         }
 	}
 }

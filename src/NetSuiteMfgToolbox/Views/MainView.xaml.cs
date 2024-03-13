@@ -1,107 +1,94 @@
 ﻿using NetSuiteMfgToolbox.ViewModels;
 using RedBuilt.NetSuite;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NetSuiteMfgToolbox.Views
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainView : Window
     {
-
-        private MainViewModel ViewModel { get; set; }
+        private readonly MainViewModel _viewModel;
 
         public MainView()
         {
             InitializeComponent();
-            this.ViewModel = new MainViewModel();
-            this.DataContext = ViewModel;
-            
+            Title = $"NetSuite Mfg Toolbox version {Assembly.GetExecutingAssembly().GetName().Version}";
+
+            _viewModel = new MainViewModel();
+            DataContext = _viewModel;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            NSEnvironmentComboBox.SelectedIndex = 1; //default to sandbox 
-            
-            //var loginWorker = new BackgroundWorker();
-            //loginWorker.DoWork += LoginWorker_DoWork;
-            //loginWorker.RunWorkerCompleted += LoginWorker_RunWorkerCompleted;
-            //pbStatus.Visibility = System.Windows.Visibility.Visible;
-            //pbStatusText.Visibility = System.Windows.Visibility.Visible;
-            //this.pbStatusText.Text = "Logging into NetSuite...";
-            //loginWorker.RunWorkerAsync();
+             //default to sandbox 
+            //await Task.Run(() => Login(NSClient.NSEnvironment.Production));
         }
 
-        private void LoginWorker_DoWork(object sender, DoWorkEventArgs e)
+        private async void Environment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Status.Text = string.Empty;
+            //_viewModel.IsLoggedIn = false;
+
+            var comboBox = sender as ComboBox;
+            var comboBoxItem = comboBox.SelectedValue as ComboBoxItem;
+
+            var choosenEnvironment = comboBoxItem.Content.ToString();
+            try
+            {
+                //Progress.Visibility = Visibility.Visible;
+                switch (choosenEnvironment)
+                {
+                    case "Sandbox":
+                        await Task.Run(() => Login(NSClient.NSEnvironment.Sandbox));
+                        break;
+                    case "Sandbox2":
+                        await Task.Run(() => Login(NSClient.NSEnvironment.Sandbox2));
+                        break;
+                    case "Sandbox3":
+                        await Task.Run(() => Login(NSClient.NSEnvironment.Sandbox3));
+                        break;
+                    case "ReleasePreview":
+                        await Task.Run(() => Login(NSClient.NSEnvironment.ReleasePreview));
+                        break;
+                    default:
+                        await Task.Run(() => Login(NSClient.NSEnvironment.Production));
+                        break;
+                }
+                Progress.Visibility = Visibility.Hidden;
+                Status.Text = $"Logged into NetSuite {choosenEnvironment}";
+                _viewModel.IsLoggedIn = true;
+            }
+            catch (Exception ex)
+            {
+                // There is no log in and nothing can be done
+                Status.Text = $"Could not log in to NetSuite {choosenEnvironment}";
+            }
+        }
+
+        private async Task Login(NSClient.NSEnvironment environment)
+        {
+            string azureAppId = "31fe67d2-9f85-4860-8abe-00e96abd3de6"; // Azure AD > App registrations > RB Mfg Toolbox
+            string azureAppSecret = "~KO8Q~.rJe8nNP-3lUSRuQGVDVh4JLGZd_u2Pbkt"; // PWVault1 > RBMfgToolbox
+
+            var nsRole = NSClient.NSIntegrationRoles.RBAppMfgToolbox;
+
             var client = new NSClient();
-            client.SetEnvironment(this.ViewModel.Environment);
-            client.LoginSSO(NSClient.NSIntegrationRoles.RBAppMfgToolbox, this.ViewModel.azureAppId, this.ViewModel.azureAppSecret);
-            
-            //this.ViewModel.AdminUser = _adminUsers.Contains(client.AuthenticatedEmail);
+            client.SetEnvironment(environment);
+
+            await client.LoginSSOAsync(nsRole, azureAppId, azureAppSecret);
         }
 
-        private void LoginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            if (e.Error != null)
+            if (MessageBox.Show("Are you sure you want to close the window?", "Are you sure?", MessageBoxButton.YesNo, MessageBoxImage.Question) 
+                != MessageBoxResult.Yes)
             {
-                this.pbStatusText.Text = "Could not sign into NetSuite. Please try restarting the application";
+                e.Cancel = true;
             }
-            else
-            {
-                this.pbStatusText.Text = "";
-                this.pbStatusText.Visibility = System.Windows.Visibility.Hidden;
-            }
-            pbStatus.Visibility = System.Windows.Visibility.Hidden;
         }
-
-        private void NSEnvironmentComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-            var comboBox = sender as System.Windows.Controls.ComboBox;
-            var comboBoxItem = comboBox.SelectedValue as System.Windows.Controls.ComboBoxItem;
-            
-            switch (comboBoxItem.Content.ToString())
-            {
-                // Login again but with the selected environment
-                case "Production":
-                    this.ViewModel.Environment = NSClient.NSEnvironment.Production;
-                    break;
-                case "Sandbox":
-                    this.ViewModel.Environment = NSClient.NSEnvironment.Sandbox;
-                    break;
-                case "Sandbox3":
-                    this.ViewModel.Environment = NSClient.NSEnvironment.Sandbox3;
-                    break;
-                case "ReleasePreview":
-                    this.ViewModel.Environment = NSClient.NSEnvironment.ReleasePreview;
-                    break;
-                default:
-                    throw new NotSupportedException("Environment not supported: " + comboBoxItem.Content.ToString());
-            }
-            var loginWorker = new BackgroundWorker();
-            loginWorker.DoWork += LoginWorker_DoWork;
-            loginWorker.RunWorkerCompleted += LoginWorker_RunWorkerCompleted;
-            pbStatus.Visibility = System.Windows.Visibility.Visible;
-            pbStatusText.Visibility = System.Windows.Visibility.Visible;
-            pbStatusText.Text = $"Logging into NetSuite {this.ViewModel.Environment.ToString()}";
-            loginWorker.RunWorkerAsync();
-        }
-       
     }
 }

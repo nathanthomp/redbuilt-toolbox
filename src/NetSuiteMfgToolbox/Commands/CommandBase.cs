@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.Commands
 {
-    internal abstract class CommandBase : ICommand
+    public abstract class CommandBase : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
@@ -14,7 +14,7 @@ namespace NetSuiteMfgToolbox.Commands
 
         public abstract void Execute(object parameter);
 
-        protected void OnCanExecuteChanged()
+        public void OnCanExecuteChanged()
         {
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }

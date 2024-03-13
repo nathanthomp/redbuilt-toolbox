@@ -1,41 +1,51 @@
-﻿using NetSuiteMfgToolbox.Models;
-using RedBuilt.NetSuite;
+﻿using NetSuiteMfgToolbox.Commands;
 using System.Windows.Input;
 
 namespace NetSuiteMfgToolbox.ViewModels
 {
     public class UpdateBOMRevisionViewModel : ViewModelBase
     {
-        private UpdateBOMRevisionModel Model { get; set; }
+        private readonly MainViewModel _mainViewModel;
 
-        private string _soNumber;
+        private string _salesOrderName;
 
-        public string SONumber
+        public string SalesOrderName
         {
-            get { return _soNumber; }
+            get { return _salesOrderName; }
             set
             {
-                _soNumber = value;
+                _salesOrderName = value;
                 OnPropertyChanged();
+                UpdateCommand.OnCanExecuteChanged();
             }
         }
 
-        public ICommand UpdateCommand { get; set; }
+        public bool IsLoggedIn { get => _mainViewModel.IsLoggedIn; }
 
-        public UpdateBOMRevisionViewModel()
+        // Sales order name must be non empty, 5 characters, and a number
+        public bool IsValidSalesOrderName
         {
-            Model = new UpdateBOMRevisionModel();
-            this.UpdateCommand = new RelayCommand(async o =>
+            get
             {
-                await this.Model.Update(this.SONumber);
-            });
+                if (string.IsNullOrWhiteSpace(SalesOrderName))
+                    return false;
+                if (SalesOrderName.Length != 5)
+                    return false;
+                foreach (var c in SalesOrderName)
+                {
+                    if (!char.IsDigit(c))
+                        return false;
+                }
+                return true;
+            }
         }
 
-        private NSClient _nsClient;
-        public NSClient nsClient
+        public CommandBase UpdateCommand { get; set; }
+
+        public UpdateBOMRevisionViewModel(MainViewModel mainViewModel)
         {
-            get { return _nsClient; }
-            set { _nsClient = value; }
+            _mainViewModel = mainViewModel;
+            UpdateCommand = new UpdateCommand(this);
         }
     }
 }
