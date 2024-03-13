@@ -6,21 +6,24 @@
         xmlns:local="clr-namespace:NetSuiteMfgToolbox"
         xmlns:viewModels="clr-namespace:NetSuiteMfgToolbox.ViewModels"
         mc:Ignorable="d"
-        Title="MainView" Height="600" Width="920" Loaded="Window_Loaded">
+        Height="600" Width="920" Loaded="Window_Loaded" Closing="Window_Closing">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="177.273"/>
             <ColumnDefinition Width="47.727"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition Height="455"/>
             <RowDefinition />
         </Grid.RowDefinitions>
+        
         <TextBlock Text="NetSuite Mfg Toolbox"
                    Grid.Column="2"
                    VerticalAlignment="Center"
@@ -28,17 +31,18 @@
                    Margin="20,0,408,0"/>
 
         <ComboBox HorizontalAlignment="Right" 
-                  x:Name="NSEnvironmentComboBox" 
+                  x:Name="Environment" 
                   Text="{Binding Environment, UpdateSourceTrigger=PropertyChanged}"
-                  SelectionChanged="NSEnvironmentComboBox_SelectionChanged"
+                  SelectionChanged="Environment_SelectionChanged"
                   Grid.Column="2" 
-                  VerticalAlignment="Center" RenderTransformOrigin="4.378,0.705"
-                  >
-            <ComboBoxItem Content="Production"/>
+                  VerticalAlignment="Center">
+            <ComboBoxItem Content="Production" IsSelected="True"/>
             <ComboBoxItem Content="Sandbox" />
+            <ComboBoxItem Content="Sandbox2" />
             <ComboBoxItem Content="Sandbox3"/>
             <ComboBoxItem Content="ReleasePreview"/>
         </ComboBox>
+        
         <Image Source="../Resources/RedBuilt_logo_large.jpg" 
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
@@ -51,8 +55,8 @@
                          Height="50"
                          FontSize="14"
                          Style="{StaticResource MenuButtonTheme}"
-                         IsChecked="True"
-                         Command="{Binding UnreleaseViewCommmand}"/>
+                         Command="{Binding UnreleaseViewCommmand}"
+                         IsChecked="True"/>
 
             <RadioButton Content="Update BOM Revisions"
                          Height="50"
@@ -60,19 +64,23 @@
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding UpdateBOMRevisionCommand}"/>
         </StackPanel>
+        
         <ContentControl Grid.Row="1" 
                         Grid.Column="2"
                         Margin="10,10,10,10"
                         Content="{Binding CurrentView}"/>
 
         <StackPanel Grid.Row="3" Grid.ColumnSpan="3" >
+            
         <ProgressBar Minimum="0" 
                          Maximum="100" 
-                         Name="pbStatus" 
-                         IsIndeterminate="True" Height="10" />
+                         Name="Progress" 
+                         IsIndeterminate="True" Height="10" 
+                         Visibility="Hidden"/>
+            
         <TextBlock Text="" 
                        HorizontalAlignment="Center" 
-                       Name="pbStatusText" 
+                       Name="Status" 
                        VerticalAlignment="Center" />
         </StackPanel>
 
