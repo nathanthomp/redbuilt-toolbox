@@ -40,8 +40,15 @@ namespace NetSuiteMfgToolbox.ViewModels
             _unreleaseViewModel = new UnreleaseViewModel();
             _updateBOMRevisionViewModel = new UpdateBOMRevisionViewModel();
 
-            UnreleaseViewCommmand = new NavigateCommand(); // this, UnreleaseViewModel
-            UpdateBOMRevisionCommand = new NavigateCommand(); // this, UpdateBOMRevisionViewModel
+            UnreleaseViewCommmand = new RelayCommand(o =>
+            {
+                CurrentView = _unreleaseViewModel;
+            });
+
+            UpdateBOMRevisionCommand = new RelayCommand(o =>
+            {
+                CurrentView = _updateBOMRevisionViewModel;
+            });
 
             CurrentView = _unreleaseViewModel;
 		}

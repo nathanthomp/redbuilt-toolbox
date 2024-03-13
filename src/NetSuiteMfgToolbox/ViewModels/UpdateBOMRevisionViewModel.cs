@@ -1,4 +1,5 @@
-﻿using NetSuiteMfgToolbox.Models;
+﻿using NetSuiteMfgToolbox.Commands;
+using NetSuiteMfgToolbox.Models;
 using RedBuilt.NetSuite;
 using System.Windows.Input;
 
